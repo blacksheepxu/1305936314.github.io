@@ -83,19 +83,19 @@
 
 
 
-<meta name="description" content="整体思路使用Numpy和pandas写一个神经网络，进行手写数字识别(MNIST)，样本图如下：  总思路整体神经网络代码只使用Numpy和pandas，根据额外需要使用time和matplotlib，设计思路如下 数据处理-&amp;gt; 建立模型 -&amp;gt; 进行训练 -&amp;gt; 进行测试 -&amp;gt; 评估时间和精度">
+<meta name="description" content="使用的数值化数据集：  链接：https:&#x2F;&#x2F;pan.baidu.com&#x2F;s&#x2F;110dhDKA8eXYV4-kfmevo0g  提取码：x3wu  整体思路使用Numpy和pandas写一个神经网络，进行手写数字识别(MNIST)，样本图如下：  总思路整体神经网络代码只使用Numpy和pandas，根据额外需要使用time和matplotlib，设计思路如下 数据处理-&amp;gt; 建立模型">
 <meta name="keywords" content="微机课设,numpy,神经网络,MNIST">
 <meta property="og:type" content="article">
 <meta property="og:title" content="用numpy实现一个双层的softmax神经网络">
 <meta property="og:url" content="https:&#x2F;&#x2F;1305936314.github.io&#x2F;2019&#x2F;11&#x2F;28&#x2F;%E7%94%A8numpy%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E5%8F%8C%E5%B1%82%E7%9A%84softmax%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C&#x2F;">
 <meta property="og:site_name" content="一个充满感情的捕咕人">
-<meta property="og:description" content="整体思路使用Numpy和pandas写一个神经网络，进行手写数字识别(MNIST)，样本图如下：  总思路整体神经网络代码只使用Numpy和pandas，根据额外需要使用time和matplotlib，设计思路如下 数据处理-&amp;gt; 建立模型 -&amp;gt; 进行训练 -&amp;gt; 进行测试 -&amp;gt; 评估时间和精度">
+<meta property="og:description" content="使用的数值化数据集：  链接：https:&#x2F;&#x2F;pan.baidu.com&#x2F;s&#x2F;110dhDKA8eXYV4-kfmevo0g  提取码：x3wu  整体思路使用Numpy和pandas写一个神经网络，进行手写数字识别(MNIST)，样本图如下：  总思路整体神经网络代码只使用Numpy和pandas，根据额外需要使用time和matplotlib，设计思路如下 数据处理-&amp;gt; 建立模型">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https:&#x2F;&#x2F;1305936314.github.io&#x2F;2019&#x2F;11&#x2F;28&#x2F;%E7%94%A8numpy%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E5%8F%8C%E5%B1%82%E7%9A%84softmax%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C&#x2F;output_13_0.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;1305936314.github.io&#x2F;2019&#x2F;11&#x2F;28&#x2F;%E7%94%A8numpy%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E5%8F%8C%E5%B1%82%E7%9A%84softmax%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C&#x2F;propagation.jpg">
 <meta property="og:image" content="https:&#x2F;&#x2F;1305936314.github.io&#x2F;2019&#x2F;11&#x2F;28&#x2F;%E7%94%A8numpy%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E5%8F%8C%E5%B1%82%E7%9A%84softmax%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C&#x2F;costs.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;1305936314.github.io&#x2F;2019&#x2F;11&#x2F;28&#x2F;%E7%94%A8numpy%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E5%8F%8C%E5%B1%82%E7%9A%84softmax%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C&#x2F;accuracy.png">
-<meta property="og:updated_time" content="2019-12-01T16:12:42.313Z">
+<meta property="og:updated_time" content="2019-12-01T16:16:56.299Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;1305936314.github.io&#x2F;2019&#x2F;11&#x2F;28&#x2F;%E7%94%A8numpy%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E5%8F%8C%E5%B1%82%E7%9A%84softmax%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C&#x2F;output_13_0.png">
 
@@ -424,7 +424,10 @@
       
 
       
-        <h1 id="整体思路"><a href="#整体思路" class="headerlink" title="整体思路"></a>整体思路</h1><p>使用Numpy和pandas写一个神经网络，进行手写数字识别(MNIST)，样本图如下：</p>
+        <blockquote>
+<p>  使用的数值化数据集：<br>  链接：<a href="https://pan.baidu.com/s/110dhDKA8eXYV4-kfmevo0g" target="_blank" rel="noopener">https://pan.baidu.com/s/110dhDKA8eXYV4-kfmevo0g</a><br>  提取码：x3wu</p>
+</blockquote>
+<h1 id="整体思路"><a href="#整体思路" class="headerlink" title="整体思路"></a>整体思路</h1><p>使用Numpy和pandas写一个神经网络，进行手写数字识别(MNIST)，样本图如下：</p>
 <img src="/2019/11/28/%E7%94%A8numpy%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E5%8F%8C%E5%B1%82%E7%9A%84softmax%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/output_13_0.png" class="" title="手写数字5">
 <h1 id="总思路"><a href="#总思路" class="headerlink" title="总思路"></a>总思路</h1><p>整体神经网络代码只使用Numpy和pandas，根据额外需要使用time和matplotlib，设计思路如下</p>
 <p>数据处理-&gt; 建立模型 -&gt; 进行训练 -&gt; 进行测试 -&gt; 评估时间和精度<br><a id="more"></a></p>
@@ -492,9 +495,6 @@
 <p>代码与cost如上图，目前改进就是如此了，将X分成100样本一小份，然后逐份进行训练，由于参数共享，所以只有反向传播时涉及到了Y，别处都不需要修改太多。后续具体参数还需要继续调整，敬请期待！</p>
 <p>最后调整好的准确率和时间如下：</p>
 <img src="/2019/11/28/%E7%94%A8numpy%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E5%8F%8C%E5%B1%82%E7%9A%84softmax%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/accuracy.png" class="" title="准确率和时间">
-<blockquote>
-<p>  使用的数值化数据集：<br>  链接：<a href="https://pan.baidu.com/s/110dhDKA8eXYV4-kfmevo0g" target="_blank" rel="noopener">https://pan.baidu.com/s/110dhDKA8eXYV4-kfmevo0g</a><br>  提取码：x3wu</p>
-</blockquote>
 
       
     </div>
