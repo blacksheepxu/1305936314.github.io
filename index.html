@@ -422,10 +422,10 @@
 
       
         
-          <h1 id="加权平均数"><a href="#加权平均数" class="headerlink" title="加权平均数"></a>加权平均数</h1><p>公式：<br>$V<em>t = \beta_1V</em>{t-1} + (1-\beta<em>1)\theta_t$<br>其中V~0~ = 0，所以展开后为：<br>$V_t = \beta_1^{t-1}(1-\beta_1)\theta_1 + \beta_1^{t-2}(1-\beta_1)\theta_2 + … + \beta_1^2(1-\beta_1)\theta</em>{t-2} + \beta<em>1(1-\beta_1)\theta</em>{t-1} + (1-\beta<em>1)\theta_t \ = (1-\beta_1)\sum</em>{i=1}^{t} \beta<em>1^{t-i}\theta</em>{i}$</p>
-<p>即$\frac{1}{1-\beta<em>1}V_t = \sum</em>{i=1}^{t}\beta_1^{t-i}\theta_i$，其中β~1~是小于1的浮点数，所以在大约$\frac{1}{1-\beta_1}$次方后，$\beta_1^{\frac{1}{1-\beta_1}}$会小于1/e（这个数相当于是一个指数衰减函数，在权重小于1/e是算作较小值），可以逐渐算作忽略不计，则可视作  <strong>V~t~为前$\frac{1}{1-\beta_1}$ 项的加权平均数</strong></p>
+          <h1 id="加权平均数"><a href="#加权平均数" class="headerlink" title="加权平均数"></a>加权平均数</h1><p>公式：<br>$V_t = \beta_1V_{t-1} + (1-\beta_1)\theta_t$<br>其中V~0~ = 0，所以展开后为：<br>$V_t = \beta_1^{t-1}(1-\beta_1)\theta_1 + \beta_1^{t-2}(1-\beta_1)\theta_2 + … + \beta_1^2(1-\beta_1)\theta_{t-2} + \beta_1(1-\beta_1)\theta_{t-1} + (1-\beta_1)\theta_t \\ = (1-\beta_1)\sum_{i=1}^{t} \beta_1^{t-i}\theta_{i}$</p>
+<p>即$\frac{1}{1-\beta_1}V_t = \sum_{i=1}^{t}\beta_1^{t-i}\theta_i$，其中β~1~是小于1的浮点数，所以在大约$\frac{1}{1-\beta_1}$次方后，$\beta_1^{\frac{1}{1-\beta_1}}$会小于1/e（这个数相当于是一个指数衰减函数，在权重小于1/e是算作较小值），可以逐渐算作忽略不计，则可视作  <strong>V~t~为前$\frac{1}{1-\beta_1}$ 项的加权平均数</strong></p>
 <p>另外，在数据的前期由于其数据比$\frac{1}{1-\beta_{1}}$小得多，所以不能算较多数的加权平均，为了弥补数据量还不足的问题，可以除以偏差修正量$1-\beta_1^t$，而这个量会随着t的增大而逐渐趋向于1，所以不会影响后面的值</p>
-<p>所以最终取的值为：<br>$\frac{V<em>t}{1-\beta_1^t} = \frac{1-\beta_1}{1-\beta_1^t}\sum</em>{i=1}^t\beta_1^{t-i}\theta_i$</p>
+<p>所以最终取的值为：<br>$\frac{V_t}{1-\beta_1^t} = \frac{1-\beta_1}{1-\beta_1^t}\sum_{i=1}^t\beta_1^{t-i}\theta_i$</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/12/01/Adam%E7%9A%84%E5%9B%9E%E9%A1%BE/#more" rel="contents">
