@@ -91,7 +91,7 @@
 <meta property="og:site_name" content="一个充满感情的捕咕人">
 <meta property="og:description" content="加权平均数公式：$Vt = \beta_1V{t-1} + (1-\beta1)\theta_t$其中V~0~ = 0，所以展开后为：$V_t = \beta_1^{t-1}(1-\beta_1)\theta_1 + \beta_1^{t-2}(1-\beta_1)\theta_2 + … + \beta_1^2(1-\beta_1)\theta{t-2} + \beta1(1-\beta_1)\">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-12-01T14:26:46.961Z">
+<meta property="og:updated_time" content="2019-12-01T14:32:20.254Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -401,6 +401,7 @@
 <p>即$\frac{1}{1-\beta<em>1}V_t = \sum</em>{i=1}^{t}\beta_1^{t-i}\theta_i$，其中β~1~是小于1的浮点数，所以在大约$\frac{1}{1-\beta_1}$次方后，$\beta_1^{\frac{1}{1-\beta_1}}$会小于1/e（这个数相当于是一个指数衰减函数，在权重小于1/e是算作较小值），可以逐渐算作忽略不计，则可视作  <strong>V~t~为前$\frac{1}{1-\beta_1}$ 项的加权平均数</strong></p>
 <p>另外，在数据的前期由于其数据比$\frac{1}{1-\beta_{1}}$小得多，所以不能算较多数的加权平均，为了弥补数据量还不足的问题，可以除以偏差修正量$1-\beta_1^t$，而这个量会随着t的增大而逐渐趋向于1，所以不会影响后面的值</p>
 <p>所以最终取的值为：<br>$\frac{V<em>t}{1-\beta_1^t} = \frac{1-\beta_1}{1-\beta_1^t}\sum</em>{i=1}^t\beta_1^{t-i}\theta_i$</p>
+<a id="more"></a>
 <h1 id="动量梯度下降法-Momentum"><a href="#动量梯度下降法-Momentum" class="headerlink" title="动量梯度下降法(Momentum)"></a>动量梯度下降法(Momentum)</h1><p>我们一般把梯度下降法比作是在爬山中的下坡，不断地迭代就是为了找出当前更快的下山的路，梯度下降法的迭代计算式为：<br>$\left{\begin{array}{l}{w = w - \alpha dw} \ {b = b - \alpha db}\end{array}\right.$</p>
 <p>w和b分别可以表示每次跨的步数多少，和一个跨步的固定最小的值，wx+b可以代表了下山的路线，所以，对于正确的下山路线而言，训练的过程可能是上下摆动较大的，而我们之前说过$\frac{1}{1-\beta_1}$代表了V~t~表示着多少天的加权平均，所以$\beta_1$越大，代表着越多值的平均值，而取较大的$\beta_1$意味着得到更平坦的图像(路线)，所以使用加权平均数可以使得dw和db的变化变得平稳，我们分别用V~dw~、V~db~表示他们使用加权平均后的值，这样可以使得w和b的变化更平稳，则wx+b也会变得更加平坦</p>
 <p>流程：<br>On iteration t:<br>    计算当前小批量的dw, db<br>    $V<em>{dw} = \beta_1V</em>{dw} + (1-\beta<em>1)dw \ V</em>{db} = \beta<em>1V</em>{db} + (1-\beta<em>1)db \ w = w - \alpha V</em>{dw}, b = b - \alpha V_{db}$</p>
