@@ -72,7 +72,7 @@
 
 
 
-  <meta name="keywords" content="deeplearning,dailystudy,computing,AI" />
+  <meta name="keywords" content="deeplearning,优化器," />
 
 
 
@@ -83,15 +83,15 @@
 
 
 
-<meta name="description" content="日常放放屁的一个博客">
-<meta name="keywords" content="深度学习 Python 计算机">
-<meta property="og:type" content="website">
-<meta property="og:title" content="分类">
-<meta property="og:url" content="https:&#x2F;&#x2F;1305936314.github.io&#x2F;categories&#x2F;">
+<meta name="description" content="加权平均数公式：$Vt = \beta_1V{t-1} + (1-\beta1)\theta_t$其中V~0~ = 0，所以展开后为：$V_t = \beta_1^{t-1}(1-\beta_1)\theta_1 + \beta_1^{t-2}(1-\beta_1)\theta_2 + … + \beta_1^2(1-\beta_1)\theta{t-2} + \beta1(1-\beta_1)\">
+<meta name="keywords" content="deeplearning,优化器">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Adam的回顾">
+<meta property="og:url" content="https:&#x2F;&#x2F;1305936314.github.io&#x2F;2019&#x2F;12&#x2F;01&#x2F;Adam%E7%9A%84%E5%9B%9E%E9%A1%BE&#x2F;">
 <meta property="og:site_name" content="一个充满感情的捕咕人">
-<meta property="og:description" content="日常放放屁的一个博客">
+<meta property="og:description" content="加权平均数公式：$Vt = \beta_1V{t-1} + (1-\beta1)\theta_t$其中V~0~ = 0，所以展开后为：$V_t = \beta_1^{t-1}(1-\beta_1)\theta_1 + \beta_1^{t-2}(1-\beta_1)\theta_2 + … + \beta_1^2(1-\beta_1)\theta{t-2} + \beta1(1-\beta_1)\">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-11-30T13:33:46.597Z">
+<meta property="og:updated_time" content="2019-12-01T14:26:46.961Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -122,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="https://1305936314.github.io/categories/"/>
+  <link rel="canonical" href="https://1305936314.github.io/2019/12/01/Adam的回顾/"/>
 
 
 
 
 
-  <title>分类 | 一个充满感情的捕咕人</title>
+  <title>Adam的回顾 | 一个充满感情的捕咕人</title>
   
 
 
@@ -297,40 +297,191 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://1305936314.github.io/2019/12/01/Adam%E7%9A%84%E5%9B%9E%E9%A1%BE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="BlackSheepX">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/Faceimage.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一个充满感情的捕咕人">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">分类</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body han-init-context">
         
         
-          <div class="category-all-page">
-            <div class="category-all-title">
-                目前共计 3 个分类
-            </div>
-            <div class="category-all">
-              <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CS231n/">CS231n</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Todo/">Todo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/deeplearning/">deeplearning</a><span class="category-list-count">1</span></li></ul>
-            </div>
-          </div>
+          <h1 class="post-title" itemprop="name headline">Adam的回顾</h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-01T22:23:19+08:00">
+                2019-12-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/12/01/Adam%E7%9A%84%E5%9B%9E%E9%A1%BE/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/12/01/Adam%E7%9A%84%E5%9B%9E%E9%A1%BE/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/12/01/Adam%E7%9A%84%E5%9B%9E%E9%A1%BE/" class="leancloud_visitors" data-flag-title="Adam的回顾">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
       
       
+
+      
+        <h1 id="加权平均数"><a href="#加权平均数" class="headerlink" title="加权平均数"></a>加权平均数</h1><p>公式：<br>$V<em>t = \beta_1V</em>{t-1} + (1-\beta<em>1)\theta_t$<br>其中V~0~ = 0，所以展开后为：<br>$V_t = \beta_1^{t-1}(1-\beta_1)\theta_1 + \beta_1^{t-2}(1-\beta_1)\theta_2 + … + \beta_1^2(1-\beta_1)\theta</em>{t-2} + \beta<em>1(1-\beta_1)\theta</em>{t-1} + (1-\beta<em>1)\theta_t \ = (1-\beta_1)\sum</em>{i=1}^{t} \beta<em>1^{t-i}\theta</em>{i}$</p>
+<p>即$\frac{1}{1-\beta<em>1}V_t = \sum</em>{i=1}^{t}\beta_1^{t-i}\theta_i$，其中β~1~是小于1的浮点数，所以在大约$\frac{1}{1-\beta_1}$次方后，$\beta_1^{\frac{1}{1-\beta_1}}$会小于1/e（这个数相当于是一个指数衰减函数，在权重小于1/e是算作较小值），可以逐渐算作忽略不计，则可视作  <strong>V~t~为前$\frac{1}{1-\beta_1}$ 项的加权平均数</strong></p>
+<p>另外，在数据的前期由于其数据比$\frac{1}{1-\beta_{1}}$小得多，所以不能算较多数的加权平均，为了弥补数据量还不足的问题，可以除以偏差修正量$1-\beta_1^t$，而这个量会随着t的增大而逐渐趋向于1，所以不会影响后面的值</p>
+<p>所以最终取的值为：<br>$\frac{V<em>t}{1-\beta_1^t} = \frac{1-\beta_1}{1-\beta_1^t}\sum</em>{i=1}^t\beta_1^{t-i}\theta_i$</p>
+<h1 id="动量梯度下降法-Momentum"><a href="#动量梯度下降法-Momentum" class="headerlink" title="动量梯度下降法(Momentum)"></a>动量梯度下降法(Momentum)</h1><p>我们一般把梯度下降法比作是在爬山中的下坡，不断地迭代就是为了找出当前更快的下山的路，梯度下降法的迭代计算式为：<br>$\left{\begin{array}{l}{w = w - \alpha dw} \ {b = b - \alpha db}\end{array}\right.$</p>
+<p>w和b分别可以表示每次跨的步数多少，和一个跨步的固定最小的值，wx+b可以代表了下山的路线，所以，对于正确的下山路线而言，训练的过程可能是上下摆动较大的，而我们之前说过$\frac{1}{1-\beta_1}$代表了V~t~表示着多少天的加权平均，所以$\beta_1$越大，代表着越多值的平均值，而取较大的$\beta_1$意味着得到更平坦的图像(路线)，所以使用加权平均数可以使得dw和db的变化变得平稳，我们分别用V~dw~、V~db~表示他们使用加权平均后的值，这样可以使得w和b的变化更平稳，则wx+b也会变得更加平坦</p>
+<p>流程：<br>On iteration t:<br>    计算当前小批量的dw, db<br>    $V<em>{dw} = \beta_1V</em>{dw} + (1-\beta<em>1)dw \ V</em>{db} = \beta<em>1V</em>{db} + (1-\beta<em>1)db \ w = w - \alpha V</em>{dw}, b = b - \alpha V_{db}$</p>
+<p>其中的超参数：α(学习率)，β~1~(控制指数加权平均，最常用0.9)</p>
+<p>Note：由于数据量较大，一般β~1~取10，而前10个数据对于整体数据而言几乎可以忽略不计，所以不必添加偏差修正量</p>
+<h1 id="根均方传播法-RMS-prop"><a href="#根均方传播法-RMS-prop" class="headerlink" title="根均方传播法(RMS prop)"></a>根均方传播法(RMS prop)</h1><p>函数在向数据的正确分布拟合的时候，x的参数w越大，往往能更快的接近正确的分布(当然也不能过大)，而b较大的时候容易过大而走弯路，所以一般不能太大，所以一般来说我们鼓励在学习过程中w变得更大一点而b变得更小一点。由此我们可以使用RMSprop方法来平衡w较小而b较大的情况</p>
+<p>流程：<br>On iteration t:<br>    计算当前小批量的dw, db<br>RMSprop: $S<em>{dw} = \beta_2 S</em>{dw} + (1 - \beta<em>2)(dw)^2 \ S</em>{db} = \beta<em>2 S</em>{db} + (1- \beta<em>2)(dw)^2$<br>更新参数：$w = w - \alpha \frac{dw}{\sqrt{S</em>{dw}} + \epsilon} \ b = b - \alpha \frac{db}{\sqrt{S_{db}} + \epsilon}$</p>
+<p>其中公式中前后S~dw~， S~db~分别代表前t次，前t-1次迭代累计的dw的平方，相对本次db而言，它们是小的，所以更新后的S~db~也相对db而言是较小数，那么$\frac{db}{\sqrt{S_{db}} + \epsilon}$是一个较大的数，b减去一个较大的数后就可以更新为一个较小数，同理dw也可以更新为一个较大数</p>
+<p>Note:ε的存在一般是为了防止S~dw~、S~db~过小导致算出来的值爆炸，所以加上一个几乎不影响结果的较小值，常用10^-8^、10^-6^</p>
+<h1 id="Adam优化算法-Adaptive-moment-Estimation"><a href="#Adam优化算法-Adaptive-moment-Estimation" class="headerlink" title="Adam优化算法(Adaptive moment Estimation)"></a>Adam优化算法(Adaptive moment Estimation)</h1><p>Adam优化算法就是将RMS传播算法和动量梯度下降法结合起来的算法</p>
+<p>流程为：<br>V~dw~=0, S~dw~=0, V~db~=0,S~db~=0<br>On iteration t:<br>    计算当前小批量的dw, db<br>    $\left.\begin{array}{l}{V<em>{dw} = \beta_1 V</em>{dw} + (1-\beta<em>1)dw} \<br>     {V</em>{db} = \beta<em>1 V</em>{db} + (1-\beta<em>1)db }\end{array}\right}$”Momentum”动量梯度下降<br>    $\left.\begin{array}{l}{S</em>{dw}= \beta<em>2 S</em>{dw} + (1-\beta<em>2)(dw)^2} \<br>     {S</em>{db}=\beta<em>2 S</em>{dw} + (1 -\beta<em>2)(db)^2}\end{array}\right}$”RMSprop”根均方传播算法<br>偏差修正：<br>    $V^{corrected}</em>{dw} = \frac{V<em>{dw}}{1-\beta_1^t} \<br>     V^{corrected}</em>{db} = \frac{V<em>{db}}{1-\beta_1^t} \<br>     S^{corrected}</em>{dw} = \frac{S<em>{dw}}{1-\beta_2^t} \<br>     S^{corrected}</em>{db} = \frac{S<em>{db}}{1-\beta_2^t}$<br>更新参数：$w = w - \alpha \frac{V^{corrected}</em>{dw}}{\sqrt{S^{corrected}<em>{dw}} + \epsilon} \<br>         b = b-\alpha \frac{V^{corrected}</em>{db}}{\sqrt{S^{corrected}_{db}} +\epsilon}$</p>
+<p>超参数：<br>α：学习率，需要调试<br>β~1~：常用0.9            （dw的加权平均数，第一<em>矩（待了解）</em>）<br>β~2~：推荐0.999        （dw^2^的加权平均数，第二矩）<br>ε：10^-8^                    （不需要太在意）</p>
+<p>总而言之，Adam优化算法就是将RMS传播算法和动量梯度下降法结合在一起，前者可以减少偏差以加快学习，后者可以使图像更加平坦，从而加快学习。</p>
+
       
     </div>
     
     
     
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/wechatQR.png" alt="BlackSheepX wechat" style="width: 200px; max-width: 100%;"/>
+    <div>性感捕咕人在线放屁</div>
+</div>
+
+      </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/deeplearning/" rel="tag"># deeplearning</a>
+          
+            <a href="/tags/%E4%BC%98%E5%8C%96%E5%99%A8/" rel="tag"># 优化器</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/11/30/CS231n-Week1-Assignment1/" rel="next" title="CS231n_Week1_Assignment1">
+                <i class="fa fa-chevron-left"></i> CS231n_Week1_Assignment1
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -339,6 +490,15 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NzczMS8yNDIyOQ"></div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -359,8 +519,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -458,6 +627,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#加权平均数"><span class="nav-number">1.</span> <span class="nav-text">加权平均数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#动量梯度下降法-Momentum"><span class="nav-number">2.</span> <span class="nav-text">动量梯度下降法(Momentum)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#根均方传播法-RMS-prop"><span class="nav-number">3.</span> <span class="nav-text">根均方传播法(RMS prop)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Adam优化算法-Adaptive-moment-Estimation"><span class="nav-number">4.</span> <span class="nav-text">Adam优化算法(Adaptive moment Estimation)</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -621,6 +806,17 @@
 
 
 
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
   
 
 
@@ -1096,6 +1292,26 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
