@@ -91,7 +91,7 @@
 <meta property="og:site_name" content="一个充满感情的捕咕人">
 <meta property="og:description" content="GAN的代码结构在GAN类外，是生成器类和判别器类的代码，而本篇中的GAN较为特殊，使用的是金字塔结构的判别器，有些地方需要额外注意。 初始化函数参数解析器首先是使用参数解析器(argparse)，方便直接在控制台使用Python命令来控制训练的部分超参数 本篇代码中含有的超参数包含：     参数名 类型 默认值 选择值 帮助     description str none none 对于本代">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-12-02T15:18:46.317Z">
+<meta property="og:updated_time" content="2019-12-02T16:54:42.803Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -545,7 +545,7 @@
 <p>再将x投入G中，并将结果放入D中，得到的真实结果与0计算均方根误差，得到公式的$D_w(\phi_{age}(G(x)))^2$部分，并将两者相加得到的损失放入train_hist[‘D_loss’]中，然后进行反向传播并更新参数</p>
 <h3 id="训练G"><a href="#训练G" class="headerlink" title="训练G"></a>训练G</h3><p>清除G优化器中的梯度，将x放入G中并将所得结果放入D，得到结果并计算均方根误差，得到：</p>
 <script type="math/tex; mode=display">\mathcal{L}_{GAN\_G} = \mathbb{E}_{x \sim P_{young}(x)}[(D_w(\phi_{age}(G(x))) - 1)^2]</script><p>并且将生成结果G(x)与x计算均方根误差，得到pixel-level-loss，即：</p>
-<script type="math/tex; mode=display">\mathcal{L}_{pixel} = \frac{1}{W\times H \times C}\lVert G(x)-x \rVert ^2_2</script><p>然后计算$L_G = 750 <em> L_{GAN_G} + 0.2 </em> L_{pixel}$</p>
+<script type="math/tex; mode=display">\mathcal{L}_{pixel} = \frac{1}{W\times H \times C}\lVert G(x)-x \rVert ^2_2</script><p>然后计算$L_G = 750 \times L_{GAN_G} + 0.2 \times L_{pixel}$</p>
 <p>将其放入train_hist[‘G_loss’]中，并且进行反向传播并更新参数</p>
 
       
