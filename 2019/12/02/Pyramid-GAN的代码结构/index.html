@@ -72,7 +72,7 @@
 
 
 
-  <meta name="keywords" content="deeplearning,dailystudy,computing,AI" />
+  <meta name="keywords" content="GAN,deeplearning,code," />
 
 
 
@@ -83,14 +83,15 @@
 
 
 
-<meta name="description" content="日常放放屁的一个博客">
-<meta name="keywords" content="深度学习 Python 计算机">
-<meta property="og:type" content="website">
-<meta property="og:title" content="一个充满感情的捕咕人">
-<meta property="og:url" content="https:&#x2F;&#x2F;1305936314.github.io&#x2F;tags&#x2F;%E4%BC%98%E5%8C%96%E5%99%A8&#x2F;">
+<meta name="description" content="GAN的代码结构在GAN类外，是生成器类和判别器类的代码，而本篇中的GAN较为特殊，使用的是金字塔结构的判别器，有些地方需要额外注意。 初始化函数参数解析器首先是使用参数解析器(argparse)，方便直接在控制台使用Python命令来控制训练的部分超参数 本篇代码中含有的超参数包含：     参数名 类型 默认值 选择值 帮助     description str none none 对于本代">
+<meta name="keywords" content="GAN,deeplearning,code">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Pyramid-GAN的代码结构">
+<meta property="og:url" content="https:&#x2F;&#x2F;1305936314.github.io&#x2F;2019&#x2F;12&#x2F;02&#x2F;Pyramid-GAN%E7%9A%84%E4%BB%A3%E7%A0%81%E7%BB%93%E6%9E%84&#x2F;">
 <meta property="og:site_name" content="一个充满感情的捕咕人">
-<meta property="og:description" content="日常放放屁的一个博客">
+<meta property="og:description" content="GAN的代码结构在GAN类外，是生成器类和判别器类的代码，而本篇中的GAN较为特殊，使用的是金字塔结构的判别器，有些地方需要额外注意。 初始化函数参数解析器首先是使用参数解析器(argparse)，方便直接在控制台使用Python命令来控制训练的部分超参数 本篇代码中含有的超参数包含：     参数名 类型 默认值 选择值 帮助     description str none none 对于本代">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-12-02T14:39:22.888Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -121,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="https://1305936314.github.io/tags/优化器/"/>
+  <link rel="canonical" href="https://1305936314.github.io/2019/12/02/Pyramid-GAN的代码结构/"/>
 
 
 
 
 
-  <title>标签: 优化器 | 一个充满感情的捕咕人</title>
+  <title>Pyramid-GAN的代码结构 | 一个充满感情的捕咕人</title>
   
 
 
@@ -156,7 +157,7 @@
     
   
 
-  <div class="container sidebar-position-right ">
+  <div class="container sidebar-position-right page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -294,54 +295,329 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>优化器<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://1305936314.github.io/2019/12/02/Pyramid-GAN%E7%9A%84%E4%BB%A3%E7%A0%81%E7%BB%93%E6%9E%84/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="BlackSheepX">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/Faceimage.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一个充满感情的捕咕人">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019/12/01/Adam%E7%9A%84%E5%9B%9E%E9%A1%BE/" itemprop="url">
-              
-                <span itemprop="name">Adam的回顾</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">Pyramid-GAN的代码结构</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-12-01T22:23:19+08:00"
-              content="2019-12-01" >
-          12-01
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-02T22:35:23+08:00">
+                2019-12-02
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/deeplearning/" itemprop="url" rel="index">
+                    <span itemprop="name">deeplearning</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/12/02/Pyramid-GAN%E7%9A%84%E4%BB%A3%E7%A0%81%E7%BB%93%E6%9E%84/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/12/02/Pyramid-GAN%E7%9A%84%E4%BB%A3%E7%A0%81%E7%BB%93%E6%9E%84/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/12/02/Pyramid-GAN%E7%9A%84%E4%BB%A3%E7%A0%81%E7%BB%93%E6%9E%84/" class="leancloud_visitors" data-flag-title="Pyramid-GAN的代码结构">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="GAN的代码结构"><a href="#GAN的代码结构" class="headerlink" title="GAN的代码结构"></a>GAN的代码结构</h1><p>在GAN类外，是生成器类和判别器类的代码，而本篇中的GAN较为特殊，使用的是金字塔结构的判别器，有些地方需要额外注意。</p>
+<h2 id="初始化函数"><a href="#初始化函数" class="headerlink" title="初始化函数"></a>初始化函数</h2><h3 id="参数解析器"><a href="#参数解析器" class="headerlink" title="参数解析器"></a>参数解析器</h3><p>首先是使用参数解析器(argparse)，方便直接在控制台使用Python命令来控制训练的部分超参数</p>
+<p>本篇代码中含有的超参数包含：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">参数名</th>
+<th style="text-align:center">类型</th>
+<th style="text-align:left">默认值</th>
+<th style="text-align:left">选择值</th>
+<th style="text-align:left">帮助</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">description</td>
+<td style="text-align:center">str</td>
+<td style="text-align:left">none</td>
+<td style="text-align:left">none</td>
+<td style="text-align:left">对于本代码的描述</td>
+</tr>
+<tr>
+<td style="text-align:left">dataset</td>
+<td style="text-align:center">str</td>
+<td style="text-align:left">CACD2000</td>
+<td style="text-align:left">[‘CACD2000’,’UTKFace’,’FG_NET’<br>,’wiki’,’MORPH’]</td>
+<td style="text-align:left">训练使用的数据集</td>
+</tr>
+<tr>
+<td style="text-align:left">epoch</td>
+<td style="text-align:center">int</td>
+<td style="text-align:left">50</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">训练的遍数</td>
+</tr>
+<tr>
+<td style="text-align:left">batch_size</td>
+<td style="text-align:center">int</td>
+<td style="text-align:left">8</td>
+<td style="text-align:left">随显存提升而提高</td>
+<td style="text-align:left">批量的大小</td>
+</tr>
+<tr>
+<td style="text-align:left">input_size</td>
+<td style="text-align:center">int</td>
+<td style="text-align:left">224</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">输入图片大小</td>
+</tr>
+<tr>
+<td style="text-align:left">save_dir</td>
+<td style="text-align:center">str</td>
+<td style="text-align:left">‘D:/GAN/Pyramid-GAN/Dict/‘</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">模型保存目录</td>
+</tr>
+<tr>
+<td style="text-align:left">result_dir</td>
+<td style="text-align:center">str</td>
+<td style="text-align:left">‘D:/GAN/Pyramid-GAN/results’</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">结果保存目录</td>
+</tr>
+<tr>
+<td style="text-align:left">lrG</td>
+<td style="text-align:center">float</td>
+<td style="text-align:left">0.0001</td>
+<td style="text-align:left">使用Adam时有人推荐3e-4</td>
+<td style="text-align:left">生成器G的学习率</td>
+</tr>
+<tr>
+<td style="text-align:left">lrD</td>
+<td style="text-align:center">float</td>
+<td style="text-align:left">0.0001</td>
+<td style="text-align:left">同上</td>
+<td style="text-align:left">判别器D的学习率</td>
+</tr>
+<tr>
+<td style="text-align:left">beta1</td>
+<td style="text-align:center">float</td>
+<td style="text-align:left">0.5</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">Adam中动量梯度下降超参数</td>
+</tr>
+<tr>
+<td style="text-align:left">beta2</td>
+<td style="text-align:center">float</td>
+<td style="text-align:left">0.999</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">Adam中根均方传播超参数</td>
+</tr>
+<tr>
+<td style="text-align:left">gpu_mode</td>
+<td style="text-align:center">bool</td>
+<td style="text-align:left">True</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">GPU模式</td>
+</tr>
+<tr>
+<td style="text-align:left">benchmark_mode</td>
+<td style="text-align:center">bool</td>
+<td style="text-align:left">True</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">标准模式</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="数据加载器"><a href="#数据加载器" class="headerlink" title="数据加载器"></a>数据加载器</h3><p>4个数据加载器dataloader0,1,2,3分别对应30岁以下，30~40，40~50和50以上的年龄图片</p>
+<h3 id="网络模型"><a href="#网络模型" class="headerlink" title="网络模型"></a>网络模型</h3><p>生成器G，判别器D，G的Adam优化器和D的Adam优化器</p>
+<h3 id="均方根误差"><a href="#均方根误差" class="headerlink" title="均方根误差"></a>均方根误差</h3><p>GPU模式使用CUDA训练G,D并且计算MSELoss(均方根误差)</p>
+<h3 id="噪声样本z"><a href="#噪声样本z" class="headerlink" title="噪声样本z"></a>噪声样本z</h3><p>使用rand()生成batch_size个100*1*1的随机数，并且可以的话放入CUDA</p>
+<h2 id="训练函数"><a href="#训练函数" class="headerlink" title="训练函数"></a>训练函数</h2><h3 id="训练历史"><a href="#训练历史" class="headerlink" title="训练历史"></a>训练历史</h3><p>使用train_hist元组，其中包含D_loss, G_loss, per_epoch_time和total_time</p>
+<p>使用ones和zeros函数分别生成batch_size个真假标签，存入变量y_fake和y_real中</p>
+<h3 id="训练D-1"><a href="#训练D-1" class="headerlink" title="训练D_1"></a>训练D_1</h3><p>使用enumerate函数遍历dataloader1中的数据，用iter表示迭代次数，数据形式为(x, y)</p>
+<p>当使用GPU模式时，将x放入cuda，清除D优化器重的梯度，并将X分别投入4个path中，这四个path代表的是从输入图片开始，经过VGG的部分然后经过扩展的部分再形成3*3*1表示的结果</p>
+<p>然后将四个path的结果投入D中，形成判别器D真实的训练结果，并以真实标签计算均方根误差，这里计算的是最小二乘公式的前半段，即$(D_w(\phi_{age}(x))-1)^2$，完整公式如下：</p>
+<script type="math/tex; mode=display">\mathcal{L}_{GAN\_D} = {\frac{1}{2}\mathbb{E}_{x\sim P_{data}}(x)[(D_w(\phi_{age}(x)) -1)^2] +  \\ \frac{1}{2}\mathbb{E}_{x \sim P_{young}}(x)[D_w(\phi_{age}(G(x)))^2 + D_w(\phi_{age}(x))^2]}</script><p>这里计算了前半段的损失公式，并且进行反向传播。然后让D的优化器进行单次优化，即更新D的所有参数</p>
+<h3 id="训练D-2"><a href="#训练D-2" class="headerlink" title="训练D_2"></a>训练D_2</h3><p>使用enumerate函数遍历dataloader0中的数据，即年轻样本</p>
+<p>开始前，先将x的前8张进行重复形成fixed_noise，修正噪声，然后声明一个全局变量fixed_img_v，即图像修正值，将fixed_noise转换成变量放入并保存</p>
+<p>然后将D优化器中的梯度清零</p>
+<p>将x重新放入更新过参数的D的Path中，并得出新的判别结果并让其与0标签计算均方根误差，用于计算损失公式的$D_w(\phi_{age}(x))^2$部分</p>
+<p>再将x投入G中，并将结果放入D中，得到的真实结果与0计算均方根误差，得到公式的$D_w(\phi_{age}(G(x)))^2$部分，并将两者相加得到的损失放入train_hist[‘D_loss’]中，然后进行反向传播并更新参数</p>
+<h3 id="训练G"><a href="#训练G" class="headerlink" title="训练G"></a>训练G</h3><p>清除G优化器中的梯度，将x放入G中并将所得结果放入D，得到结果并计算均方根误差，得到：</p>
+<script type="math/tex; mode=display">\mathcal{L}_{GAN\_G} = \mathbb{E}_{x \sim P_{young}(x)}[(D_w(\phi_{age}(G(x))) - 1)^2]</script><p>并且将生成结果G(x)与x计算均方根误差，得到pixel-level-loss，即：</p>
+<script type="math/tex; mode=display">\mathcal{L}_{pixel} = \frac{1}{W\times H \times C}\lVert G(x)-x \rVert ^2_2</script><p>然后计算L~G~ = 750 <em> L~GAN_G~ + 0.2 </em> L~pixel~</p>
+<p>将其放入train_hist[‘G_loss’]中，并且进行反向传播并更新参数</p>
 
       
     </div>
+    
+    
+    
 
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/wechatQR.png" alt="BlackSheepX wechat" style="width: 200px; max-width: 100%;"/>
+    <div>性感捕咕人在线放屁</div>
+</div>
+
+      </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/GAN/" rel="tag"># GAN</a>
+          
+            <a href="/tags/deeplearning/" rel="tag"># deeplearning</a>
+          
+            <a href="/tags/code/" rel="tag"># code</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/12/01/Adam%E7%9A%84%E5%9B%9E%E9%A1%BE/" rel="next" title="Adam的回顾">
+                <i class="fa fa-chevron-left"></i> Adam的回顾
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -349,6 +625,15 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NzczMS8yNDIyOQ"></div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -369,8 +654,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -468,6 +762,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#GAN的代码结构"><span class="nav-number">1.</span> <span class="nav-text">GAN的代码结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#初始化函数"><span class="nav-number">1.1.</span> <span class="nav-text">初始化函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#参数解析器"><span class="nav-number">1.1.1.</span> <span class="nav-text">参数解析器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据加载器"><span class="nav-number">1.1.2.</span> <span class="nav-text">数据加载器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络模型"><span class="nav-number">1.1.3.</span> <span class="nav-text">网络模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#均方根误差"><span class="nav-number">1.1.4.</span> <span class="nav-text">均方根误差</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#噪声样本z"><span class="nav-number">1.1.5.</span> <span class="nav-text">噪声样本z</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#训练函数"><span class="nav-number">1.2.</span> <span class="nav-text">训练函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#训练历史"><span class="nav-number">1.2.1.</span> <span class="nav-text">训练历史</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#训练D-1"><span class="nav-number">1.2.2.</span> <span class="nav-text">训练D_1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#训练D-2"><span class="nav-number">1.2.3.</span> <span class="nav-text">训练D_2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#训练G"><span class="nav-number">1.2.4.</span> <span class="nav-text">训练G</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -599,6 +909,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -627,6 +941,17 @@
 
 
 
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
   
 
 
