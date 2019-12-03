@@ -602,7 +602,7 @@
 <p>  温馨提示：由于本篇latex公式较多，容易显示异常或者加载较慢</p>
 </blockquote>
 <p>公式：<br>$V_t = \beta_1V_{t-1} + (1-\beta_1)\theta_t$<br>其中$V_0 = 0$，所以展开后为：<br>$V_t = \beta_1^{t-1}(1-\beta_1)\theta_1 + \beta_1^{t-2}(1-\beta_1)\theta_2 + … + \beta_1^2(1-\beta_1)\theta_{t-2} + \beta_1(1-\beta_1)\theta_{t-1} + (1-\beta_1)\theta_t \\ = (1-\beta_1)\sum_{i=1}^{t} \beta_1^{t-i}\theta_{i}$</p>
-<p>即$\frac{1}{1-\beta_1}V_t = \sum_{i=1}^{t}\beta_1^{t-i}\theta_i$，其中β~1~是小于1的浮点数，所以在大约$\frac{1}{1-\beta_1}$次方后，$\beta_1^{\frac{1}{1-\beta_1}}$会小于1/e（这个数相当于是一个指数衰减函数，在权重小于1/e是算作较小值），可以逐渐算作忽略不计，则可视作  <strong>$V_t$为前$\frac{1}{1-\beta_1}$ 项的加权平均数</strong></p>
+<p>即$\frac{1}{1-\beta_1}V_t = \sum_{i=1}^{t}\beta_1^{t-i}\theta_i$，其中$\beta_1$是小于1的浮点数，所以在大约$\frac{1}{1-\beta_1}$次方后，$\beta_1^{\frac{1}{1-\beta_1}}$会小于1/e（这个数相当于是一个指数衰减函数，在权重小于1/e是算作较小值），可以逐渐算作忽略不计，则可视作  <strong>$V_t$为前$\frac{1}{1-\beta_1}$ 项的加权平均数</strong></p>
 <p>另外，在数据的前期由于其数据比$\frac{1}{1-\beta_{1}}$小得多，所以不能算较多数的加权平均，为了弥补数据量还不足的问题，可以除以偏差修正量$1-\beta_1^t$，而这个量会随着t的增大而逐渐趋向于1，所以不会影响后面的值</p>
 <p>所以最终取的值为：<br>$\frac{V_t}{1-\beta_1^t} = \frac{1-\beta_1}{1-\beta_1^t}\sum_{i=1}^t\beta_1^{t-i}\theta_i$</p>
           <!--noindex-->
