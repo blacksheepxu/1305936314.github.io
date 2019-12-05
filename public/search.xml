@@ -4,6 +4,50 @@
   
     
     <entry>
+      <title>CS231n-Week2-Assignment3</title>
+      <link href="/2019/12/05/CS231n-Week2-Assignment3/"/>
+      <url>/2019/12/05/CS231n-Week2-Assignment3/</url>
+      
+        <content type="html"><![CDATA[<h1 id="学习："><a href="#学习：" class="headerlink" title="学习："></a>学习：</h1><h2 id="知识点："><a href="#知识点：" class="headerlink" title="知识点："></a>知识点：</h2><p>KNN算法：</p><ol><li>距离度量：<br>根据给定的度量，在训练集合中找出与x距离最近的k个点(k=1时即近邻算法)</li><li>分类决策规则(k&gt;1时为KNN)<br>根据分类决策规则(如多数表决，加权方法等)决定x的类别y<br>总结：KNN算法三要素：K值的选择，距离度量，分类决策规则</li></ol><p>复杂度：<br>训练复杂度: KNN算法只是将训练数据及训练数据及标签预先保存，并不涉及某些计算，复杂度为o(1)<br>测试复杂度： 对于某个样本x，需要与标签数据逐一进行对比，计算量与数据大小有关，复杂度为o(N)</p><h2 id="线性分类器"><a href="#线性分类器" class="headerlink" title="线性分类器"></a>线性分类器</h2><p>线性分类器是最简单的一种参数模型</p><p>f(x,W)是最简单的单纯的权重矩阵W(eight)与数据x相乘，并且加上一个偏置向量b(ias)，得到的结果根据大小说明分别于那一类而言的可能性</p><p>这里的线性分类器中的Bias不与训练数据交互，只是一开始人为的添加基于先验信息的偏好设置，比如训练集中某一类的数据较多，那么会是这一类的概率较大，可以设置对应的b值较大</p><p>线性分类器中的权重矩阵W就是找到一种使得对于各个训练数据与权重得到的结果中样本对应的类的值较大的一个方法，这就好像寻找并匹配数据中存在的分布，使得模板与数据相乘后符合这样的分布。</p><h1 id="作业："><a href="#作业：" class="headerlink" title="作业："></a>作业：</h1><h2 id="f-x-w-线性分类器与knn的区别"><a href="#f-x-w-线性分类器与knn的区别" class="headerlink" title="f(x, w)线性分类器与knn的区别"></a>f(x, w)线性分类器与knn的区别</h2><p>线性分类器是训练过程中的复杂度较高而预测过程的复杂度很低，而KNN的复杂度则反过来，这使得线性分类器可以在低耗的设备上运行</p><p>KNN的计算基本只基于距离度量，而线性分类器的计算主要基于W矩阵的匹配</p><h2 id="线性分类器为什么可以看成一种模板匹配方法"><a href="#线性分类器为什么可以看成一种模板匹配方法" class="headerlink" title="线性分类器为什么可以看成一种模板匹配方法"></a>线性分类器为什么可以看成一种模板匹配方法</h2><p>线性分类器中的权重矩阵W就是找到一种使得对于各个训练数据与权重得到的结果中样本对应的类的值较大的一个方法，这就好像寻找并匹配数据中存在的分布，使得模板与数据相乘后符合这样的分布。</p><h2 id="线性分类器的缺点也就是存在的问题"><a href="#线性分类器的缺点也就是存在的问题" class="headerlink" title="线性分类器的缺点也就是存在的问题"></a>线性分类器的缺点也就是存在的问题</h2><img src="/2019/12/05/CS231n-Week2-Assignment3/%E7%BA%BF%E6%80%A7%E5%88%86%E7%B1%BB%E5%99%A8%E7%9A%84%E5%9B%B0%E5%A2%83.png" class="" title="线性分类器的问题"><ol><li>异或问题/奇偶问题</li><li>多分类问题</li><li>L2距离范围固定的分类问题</li></ol><h2 id="分析代码实现的任务是什么，每个函数模块实现的功能是什么，代码运行的逻辑"><a href="#分析代码实现的任务是什么，每个函数模块实现的功能是什么，代码运行的逻辑" class="headerlink" title="分析代码实现的任务是什么，每个函数模块实现的功能是什么，代码运行的逻辑"></a>分析代码实现的任务是什么，每个函数模块实现的功能是什么，代码运行的逻辑</h2><h2 id="编程作业"><a href="#编程作业" class="headerlink" title="编程作业"></a>编程作业</h2><h3 id="遇到的问题："><a href="#遇到的问题：" class="headerlink" title="遇到的问题："></a>遇到的问题：</h3><ol><li>第一个cell运行就报错了，data_utils.py中的<code>from scipy.misc import imread</code>这句话中找不到imread，因为在新版本的scipy中,imread已经被移除了，取而代之的使用<code>from imageio import imread</code></li><li>紧接着下一个cell又遇见了问题，找不到数据集，这个通过运行datasets文件夹中的”get_datasets.sh”，如果无效，则复制其中的网址手动下载放入该文件夹下后，将网址那行代码加井号注释掉再运行，就会将tar.gz压缩文件解压好，此时再运行第二cell就没问题了</li><li>第五个cell，即加载KNN分类器时又报错了，因为没有past模块，这个模块需要自己安装，令人啼笑皆非的是需要装的竟然叫<strong>future</strong></li><li></li></ol><h3 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h3><ol><li>加载需要的包，设置画布的属性，并添加一些需要的函数</li><li>加载数据集并打印其训练和测试集的形状</li><li>将数据集的部分数据可视化呈现出来</li><li>随机抽取一定数量的数据做成新的训练测试集，并压缩成数量上堆叠起来的一维向量</li><li></li></ol><blockquote><p>  耳机快递丢件了我透暂时没心情写了明天补</p></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> CS231n </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> CS231n </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>汇编学习</title>
+      <link href="/2019/12/04/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/"/>
+      <url>/2019/12/04/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>  本文为学习了jiftle大神翻译并写下的通俗易懂的《<a href="https://www.cnblogs.com/jiftle/p/8453106.html" target="_blank" rel="noopener">X86汇编快速入门</a>》后的记录  </p></blockquote><h1 id="寄存器部分"><a href="#寄存器部分" class="headerlink" title="寄存器部分"></a>寄存器部分</h1><img src="/2019/12/04/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/x86-registers.png" class="" title="x86处理器的主要寄存器"><p>如图，EAX用于计算，ECX用于循环变量计数，ESP指示栈指针(用于指示栈顶位置)，EBP是基址指针(用于指示子程序或者函数调用的基址指针)。</p><p>并且，EAX,EBX, ECX和EDX的前两个高位字节和后两个低位字节可以独立使用，其中两位低字节又被独立分为H和L部分，这样做是考虑兼容16位程序。</p><p>应用寄存器时，名称大小写不敏感，eax与EAX无差别</p><h1 id="内存和寻址方式"><a href="#内存和寻址方式" class="headerlink" title="内存和寻址方式"></a>内存和寻址方式</h1><h2 id="声明静态数据区"><a href="#声明静态数据区" class="headerlink" title="声明静态数据区"></a>声明静态数据区</h2><p>X86汇编语言中可以使用”.DATA”指令声明静态数据区(类似于全局变量)，数据以单字节(<strong>DB</strong>)，双字节(<strong>DW</strong>)或4字节(<strong>DD</strong>)存放，分别用DB,DW,DD指令表示声明内存的长度。在汇编语言中，相邻定义的标签在内存中连续存放</p><p>额外的，还可以声明连续的数据和数组，声明数组时使用<strong>DUP</strong>关键字</p><div class="table-container"><table><thead><tr><th>.DATA</th><th></th><th></th></tr></thead><tbody><tr><td>标签</td><td>指令</td><td>作用</td></tr><tr><td>var</td><td>DB 64</td><td>声明一个字节，并将数值64放入此字节</td></tr><tr><td>var2</td><td>DB ?</td><td>声明一个未初始化的字节</td></tr><tr><td></td><td>DB 10</td><td>声明一个没有标签的字节，值为10</td></tr><tr><td>X</td><td>DW ?</td><td>声明一个未初始化的双字节</td></tr><tr><td>Y</td><td>DD 30000</td><td>声明一个4字节，其值为30000</td></tr><tr><td>Z</td><td>DD 1, 2, 3</td><td>声明三个4字节的值，分别初始化为1,2,3，地址为Z+8的值会是3</td></tr><tr><td>bytes</td><td>DB 10 DUP(?)</td><td>在bytes的位置处开始声明10个未初始化的字节</td></tr><tr><td>arr</td><td>DD 100 DUP(0)</td><td>在arr位置处开始声明100个4字节字符，全部初始化为0</td></tr><tr><td>str</td><td>DB ‘hello’, 0</td><td>在str地址处开始声明6个字节,初始化为hello字母的ASCII值和一个0</td></tr></tbody></table></div><h2 id="寻址方式"><a href="#寻址方式" class="headerlink" title="寻址方式"></a>寻址方式</h2><p>现代的x86处理器具有$2^{32}$字节的寻址空间，在上面的例子中，我们用标签(label)表示内存区域，这些标签在实际汇编时，均被32位的实际地址代替。</p><p>除了支持这种直接的内存区域描述，x86还提供了一种灵活的内存寻址方式，即利用最多两个32位的寄存器和一个32位的有符号常数相加计算一个内存地址，其中一个寄存器可以左移1、2或3位以表述更大的空间。例：</p><div class="table-container"><table><thead><tr><th>指令</th><th>含义</th></tr></thead><tbody><tr><td>mov eax, [ebx]</td><td>将ebx值指示的内存地址中的4个字节传送到eax中</td></tr><tr><td>mov [var], ebx</td><td>将ebx的内容传送到[var]的值指示的内存地址中</td></tr><tr><td>mov eax, [esi-4]</td><td>将esi-4值指示的内存地址中的4个字节传送到eax中</td></tr><tr><td>mov [esi+eax], cl</td><td>将cl的值传送到esi + eax的值指示的内存地址中</td></tr><tr><td>mov  edx, [esi + 4*ebx]</td><td>将esi + 4*ebx值指示的内存中的4个字节传送到edx</td></tr></tbody></table></div><p>注意：方括号中的两个标签之间只能使用加法，并且最多只能有两个寄存器参与运算</p><h2 id="长度规定"><a href="#长度规定" class="headerlink" title="长度规定"></a>长度规定</h2><p>汇编中，一般用DB,DW,DD声明内存空间的大小</p><p>而在mov [edx], 2中，如果没有特殊的标识，就不确定常数2是单字节、双字节还是4字节，x86提供了三个指示规则标记，分别为BYTE PTR, WORD PTR,和DWORD PTR,上面的例子可以写成：</p><p>mov BYTE PTR [ebx], 2   ; mov WORD PTR [ebx], 2 ;   mov DWORD PTR [ebx], 2，此时意思就非常清晰</p><h1 id="汇编指令"><a href="#汇编指令" class="headerlink" title="汇编指令"></a>汇编指令</h1><p>汇编指令通常可以分为<strong>数据传送指令、逻辑计算指令和控制流指令</strong>。以下标记分别表示寄存器，内存和常数</p><div class="table-container"><table><thead><tr><th>\<reg32\></th><th>32位寄存器(EAX, EBX, ECX, EDX, ESI, EDI, ESP or EBP)</th></tr></thead><tbody><tr><td>\<reg16\></td><td>16位寄存器(AX, BX, CX, or DX)</td></tr><tr><td>\<reg 8 \></td><td>8位寄存器(AH, BH, CH, DH, AL, BL, CL or DL)</td></tr><tr><td>\<reg\></td><td>任何寄存器</td></tr><tr><td></td><td></td></tr><tr><td>\<mem\></td><td>内存地址(例如 [eax], [var + 4], or )</td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td></tr></tbody></table></div>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> x86汇编 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>CS231n_Week1_Assignment2</title>
       <link href="/2019/12/03/CS231n-Week1-Assignment2/"/>
       <url>/2019/12/03/CS231n-Week1-Assignment2/</url>
