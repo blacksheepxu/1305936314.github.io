@@ -92,7 +92,7 @@
 <meta property="og:description" content="本文为学习了jiftle大神翻译并写下的通俗易懂的《X86汇编快速入门》后的记录    寄存器部分 如图，EAX用于计算，ECX用于循环变量计数，ESP指示栈指针(用于指示栈顶位置)，EBP是基址指针(用于指示子程序或者函数调用的基址指针)。 并且，EAX,EBX, ECX和EDX的前两个高位字节和后两个低位字节可以独立使用，其中两位低字节又被独立分为H和L部分，这样做是考虑兼容16位程序。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https:&#x2F;&#x2F;1305936314.github.io&#x2F;2019&#x2F;12&#x2F;04&#x2F;%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0&#x2F;x86-registers.png">
-<meta property="og:updated_time" content="2019-12-09T14:02:02.213Z">
+<meta property="og:updated_time" content="2019-12-09T15:54:03.227Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;1305936314.github.io&#x2F;2019&#x2F;12&#x2F;04&#x2F;%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0&#x2F;x86-registers.png">
 
@@ -541,26 +541,38 @@
 </tr>
 <tr>
 <td><code>&lt;mem&gt;</code></td>
-<td>内存地址(例如 [eax], [var + 4], or )</td>
+<td>内存地址(例如 [eax], [var + 4]  或者dword ptr [eax+ebx]</td>
 </tr>
 <tr>
 <td><code>&lt;con32&gt;</code></td>
-<td></td>
+<td>32位常数</td>
 </tr>
 <tr>
 <td><code>&lt;con16&gt;</code></td>
-<td></td>
+<td>16位常数</td>
 </tr>
 <tr>
 <td><code>&lt;con8&gt;</code></td>
-<td></td>
+<td>8位常数</td>
 </tr>
 <tr>
 <td><code>&lt;con&gt;</code></td>
+<td>任何8位，16位或32位常数</td>
 </tr>
 </tbody>
 </table>
 </div>
+<h2 id="数据传送指令"><a href="#数据传送指令" class="headerlink" title="数据传送指令"></a>数据传送指令</h2><h3 id="mov-——移动-复制"><a href="#mov-——移动-复制" class="headerlink" title="mov ——移动(复制)"></a>mov ——移动(复制)</h3><p>(操作码：88, 89,8A,8B,8C,8E,…)</p>
+<p>mov指令将第二个操作数(可以是寄存器的内容、内存中的内容或值)复制到第一个操作数(寄存器或内存)。mov 不能用于直接从内存复制到内存，其语法如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mov &lt;reg&gt;, &lt;reg&gt;</span><br><span class="line">mov &lt;reg&gt;, &lt;mem&gt;</span><br><span class="line">mov &lt;mem&gt;,&lt;reg&gt;</span><br><span class="line">mov &lt;reg&gt;,&lt;const&gt;</span><br><span class="line">mov &lt;mem&gt;,&lt;const&gt;</span><br><span class="line"></span><br><span class="line">比如：</span><br><span class="line">mov eax,ebx —— 将ebx的值拷贝到eax</span><br><span class="line">mov byte ptr[var],5 ——将5保存到var指示内存中的一个字节中</span><br></pre></td></tr></table></figure>
+<h3 id="push——入栈"><a href="#push——入栈" class="headerlink" title="push——入栈"></a>push——入栈</h3><p>(操作码：FF,89.8A,8B,8C,8E,…)</p>
+<p>push指令将操作数压入内存的栈中，栈主要用于函数调用过程中，其中ESP只是栈顶。在压栈前，首先将ESP值减4(X86栈增长方向与内存地址编号增长方向相反），然后将操作数内容压入ESP指示的位置。语法如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">push &lt;reg32&gt;</span><br><span class="line">push &lt;mem&gt;</span><br><span class="line">push &lt;con32&gt;</span><br><span class="line"></span><br><span class="line">比如：</span><br><span class="line">push eax ——将eax的内容压栈</span><br><span class="line">push [var] ——将var指示的4字节内容压栈</span><br></pre></td></tr></table></figure>
+<h3 id="pop-——-出栈"><a href="#pop-——-出栈" class="headerlink" title="pop  —— 出栈"></a>pop  —— 出栈</h3><p>pop指令与push指令相反，它执行的是出栈的工作。它首先将ESP指示的地址中的内容出栈，然后将ESP值加4，语法如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">pop &lt;reg32&gt;</span><br><span class="line">pop &lt;mem&gt;</span><br><span class="line"></span><br><span class="line">比如：</span><br><span class="line">pop edi —— 将栈顶的元素出栈到edi中</span><br><span class="line">pop [edx] ——将栈顶元素出栈到从EBX位置开始的4个字节处</span><br></pre></td></tr></table></figure>
+<h3 id="lea-——载入有效地址"><a href="#lea-——载入有效地址" class="headerlink" title="lea   ——载入有效地址"></a>lea   ——载入有效地址</h3><p>lea实际上是一个载入有效地址指令，将第二个操作数表示的地址载入到第一个操作数(寄存器)中，其语法如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">lea &lt;reg32&gt;,&lt;mem&gt;</span><br><span class="line"></span><br><span class="line">比如：</span><br><span class="line">lea eax,[var]——将var指示的地址载入eax中</span><br><span class="line">lea edi,[ebx+4*esi]——将ebx+4*esi表示的地址载入到edi中，这实际上是上面所说的寻址模式的一种表示方式</span><br></pre></td></tr></table></figure>
+<h2 id="算术和逻辑指令"><a href="#算术和逻辑指令" class="headerlink" title="算术和逻辑指令"></a>算术和逻辑指令</h2><h3 id="add-——-整数加法"><a href="#add-——-整数加法" class="headerlink" title="add —— 整数加法"></a>add —— 整数加法</h3><p>add指令将两个操作数相加，且将相加后的结果保存到第一个操作数中。语法如下：</p>
 
       
     </div>
@@ -786,7 +798,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#寄存器部分"><span class="nav-number">1.</span> <span class="nav-text">寄存器部分</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内存和寻址方式"><span class="nav-number">2.</span> <span class="nav-text">内存和寻址方式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#声明静态数据区"><span class="nav-number">2.1.</span> <span class="nav-text">声明静态数据区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#寻址方式"><span class="nav-number">2.2.</span> <span class="nav-text">寻址方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#长度规定"><span class="nav-number">2.3.</span> <span class="nav-text">长度规定</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#汇编指令"><span class="nav-number">3.</span> <span class="nav-text">汇编指令</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#寄存器部分"><span class="nav-number">1.</span> <span class="nav-text">寄存器部分</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内存和寻址方式"><span class="nav-number">2.</span> <span class="nav-text">内存和寻址方式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#声明静态数据区"><span class="nav-number">2.1.</span> <span class="nav-text">声明静态数据区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#寻址方式"><span class="nav-number">2.2.</span> <span class="nav-text">寻址方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#长度规定"><span class="nav-number">2.3.</span> <span class="nav-text">长度规定</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#汇编指令"><span class="nav-number">3.</span> <span class="nav-text">汇编指令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据传送指令"><span class="nav-number">3.1.</span> <span class="nav-text">数据传送指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#mov-——移动-复制"><span class="nav-number">3.1.1.</span> <span class="nav-text">mov ——移动(复制)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#push——入栈"><span class="nav-number">3.1.2.</span> <span class="nav-text">push——入栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pop-——-出栈"><span class="nav-number">3.1.3.</span> <span class="nav-text">pop  —— 出栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lea-——载入有效地址"><span class="nav-number">3.1.4.</span> <span class="nav-text">lea   ——载入有效地址</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算术和逻辑指令"><span class="nav-number">3.2.</span> <span class="nav-text">算术和逻辑指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#add-——-整数加法"><span class="nav-number">3.2.1.</span> <span class="nav-text">add —— 整数加法</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
