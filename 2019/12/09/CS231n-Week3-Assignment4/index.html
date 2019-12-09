@@ -83,16 +83,16 @@
 
 
 
-<meta name="description" content="知识点上节内容图像分类问题，机器看到的图像是像素值矩阵 机器识别图像的困难在于语义鸿沟，即识别图片中的事物即含义 两个算法：KNN算法和线性分类器，KNN算法相对线性分类器而言没有可优化的权重矩阵W 损失函数损失函数的通用表达式 L(W) = \frac{1}{N} \sum_{i=1}^{N}L_i(f(x_i, W), y_i)损失函数用于衡量W的优良 多分类SVM损失函数(Hinge los">
+<meta name="description" content="知识点上节内容图像分类问题，机器看到的图像是像素值矩阵 机器识别图像的困难在于语义鸿沟，即识别图片中的事物即含义 两个算法：KNN算法和线性分类器，KNN算法相对线性分类器而言没有可优化的权重矩阵W 损失函数损失函数的通用表达式 L(W) = \frac{1}{N} \sum_{i=1}^{N}L_i(f(x_i, W), y_i)损失函数用于衡量W的优良">
 <meta name="keywords" content="CS231n,Softmax,Loss">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CS231n-Week3-Assignment4">
 <meta property="og:url" content="https:&#x2F;&#x2F;1305936314.github.io&#x2F;2019&#x2F;12&#x2F;09&#x2F;CS231n-Week3-Assignment4&#x2F;">
 <meta property="og:site_name" content="一个充满感情的捕咕人">
-<meta property="og:description" content="知识点上节内容图像分类问题，机器看到的图像是像素值矩阵 机器识别图像的困难在于语义鸿沟，即识别图片中的事物即含义 两个算法：KNN算法和线性分类器，KNN算法相对线性分类器而言没有可优化的权重矩阵W 损失函数损失函数的通用表达式 L(W) = \frac{1}{N} \sum_{i=1}^{N}L_i(f(x_i, W), y_i)损失函数用于衡量W的优良 多分类SVM损失函数(Hinge los">
+<meta property="og:description" content="知识点上节内容图像分类问题，机器看到的图像是像素值矩阵 机器识别图像的困难在于语义鸿沟，即识别图片中的事物即含义 两个算法：KNN算法和线性分类器，KNN算法相对线性分类器而言没有可优化的权重矩阵W 损失函数损失函数的通用表达式 L(W) = \frac{1}{N} \sum_{i=1}^{N}L_i(f(x_i, W), y_i)损失函数用于衡量W的优良">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https:&#x2F;&#x2F;1305936314.github.io&#x2F;2019&#x2F;12&#x2F;09&#x2F;CS231n-Week3-Assignment4&#x2F;Hingeloss.png">
-<meta property="og:updated_time" content="2019-12-09T09:11:22.960Z">
+<meta property="og:updated_time" content="2019-12-09T09:25:15.633Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;1305936314.github.io&#x2F;2019&#x2F;12&#x2F;09&#x2F;CS231n-Week3-Assignment4&#x2F;Hingeloss.png">
 
@@ -426,6 +426,7 @@
 <p>两个算法：KNN算法和线性分类器，KNN算法相对线性分类器而言没有可优化的权重矩阵W</p>
 <h2 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h2><h3 id="损失函数的通用表达式"><a href="#损失函数的通用表达式" class="headerlink" title="损失函数的通用表达式"></a>损失函数的通用表达式</h3><script type="math/tex; mode=display">
 L(W) = \frac{1}{N} \sum_{i=1}^{N}L_i(f(x_i, W), y_i)</script><p>损失函数用于衡量W的优良</p>
+<a id="more"></a>
 <h3 id="多分类SVM损失函数-Hinge-loss-合页损失函数"><a href="#多分类SVM损失函数-Hinge-loss-合页损失函数" class="headerlink" title="多分类SVM损失函数(Hinge loss 合页损失函数)"></a>多分类SVM损失函数(Hinge loss 合页损失函数)</h3><script type="math/tex; mode=display">
 L_i = \sum_{j \neq y_i} \max{(0,s_j-s_{y_i}+1)}</script><p>该函数存在一个问题：L=0时的w不唯一，使用正则项可以解决这个问题</p>
 <h3 id="Softmax-分类器-Multinomial-Logistic-Regression"><a href="#Softmax-分类器-Multinomial-Logistic-Regression" class="headerlink" title="Softmax 分类器(Multinomial Logistic Regression)"></a>Softmax 分类器(Multinomial Logistic Regression)</h3><script type="math/tex; mode=display">

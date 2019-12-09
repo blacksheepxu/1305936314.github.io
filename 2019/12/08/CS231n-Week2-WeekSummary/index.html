@@ -83,15 +83,15 @@
 
 
 
-<meta name="description" content="总结知识点CIFAR-10数据集，5w训练，1w测试，10class，32x32像素 距离度量方法： L1范数：$ d_1 (I_1, I_2) = \sum_p \lvert I_1^p - I_2^P\rvert$ L2范数：$d_2(I_1, I_2 = \sqrt{\sum_p(I_1^p - I_2^p)^2}$ 设置超参数较好的方法： １．将数据分成训练集，验证集和测试集，使用多组超参">
+<meta name="description" content="总结知识点CIFAR-10数据集，5w训练，1w测试，10class，32x32像素 距离度量方法： L1范数：$ d_1 (I_1, I_2) = \sum_p \lvert I_1^p - I_2^P\rvert$">
 <meta name="keywords" content="CS231n">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CS231n-Week2-WeekSummary">
 <meta property="og:url" content="https:&#x2F;&#x2F;1305936314.github.io&#x2F;2019&#x2F;12&#x2F;08&#x2F;CS231n-Week2-WeekSummary&#x2F;">
 <meta property="og:site_name" content="一个充满感情的捕咕人">
-<meta property="og:description" content="总结知识点CIFAR-10数据集，5w训练，1w测试，10class，32x32像素 距离度量方法： L1范数：$ d_1 (I_1, I_2) = \sum_p \lvert I_1^p - I_2^P\rvert$ L2范数：$d_2(I_1, I_2 = \sqrt{\sum_p(I_1^p - I_2^p)^2}$ 设置超参数较好的方法： １．将数据分成训练集，验证集和测试集，使用多组超参">
+<meta property="og:description" content="总结知识点CIFAR-10数据集，5w训练，1w测试，10class，32x32像素 距离度量方法： L1范数：$ d_1 (I_1, I_2) = \sum_p \lvert I_1^p - I_2^P\rvert$">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-12-08T15:53:50.325Z">
+<meta property="og:updated_time" content="2019-12-09T09:25:30.984Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -422,6 +422,7 @@
         <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><h2 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h2><p>CIFAR-10数据集，5w训练，1w测试，10class，32x32像素</p>
 <p>距离度量方法：</p>
 <p><strong>L1范数</strong>：$ d_1 (I_1, I_2) = \sum_p \lvert I_1^p - I_2^P\rvert$</p>
+<a id="more"></a>
 <p><strong>L2范数</strong>：$d_2(I_1, I_2 = \sqrt{\sum_p(I_1^p - I_2^p)^2}$</p>
 <p>设置超参数较好的方法：</p>
 <p>１．将数据分成训练集，验证集和测试集，使用多组超参数在训练集中运行，并在验证集上进行验证， 并且使用在验证集中表现最好的，放入测试集中运行，看看效果(要保证验证集和测试集完全分隔)</p>
