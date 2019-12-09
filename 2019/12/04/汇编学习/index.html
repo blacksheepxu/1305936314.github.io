@@ -92,7 +92,7 @@
 <meta property="og:description" content="本文为学习了jiftle大神翻译并写下的通俗易懂的《X86汇编快速入门》后的记录    寄存器部分 如图，EAX用于计算，ECX用于循环变量计数，ESP指示栈指针(用于指示栈顶位置)，EBP是基址指针(用于指示子程序或者函数调用的基址指针)。 并且，EAX,EBX, ECX和EDX的前两个高位字节和后两个低位字节可以独立使用，其中两位低字节又被独立分为H和L部分，这样做是考虑兼容16位程序。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https:&#x2F;&#x2F;1305936314.github.io&#x2F;2019&#x2F;12&#x2F;04&#x2F;%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0&#x2F;x86-registers.png">
-<meta property="og:updated_time" content="2019-12-09T13:56:42.506Z">
+<meta property="og:updated_time" content="2019-12-09T14:02:02.213Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;1305936314.github.io&#x2F;2019&#x2F;12&#x2F;04&#x2F;%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0&#x2F;x86-registers.png">
 
@@ -514,21 +514,25 @@
 <table>
 <thead>
 <tr>
-<th>\<reg32></th>
-<th>32位寄存器(EAX, EBX, ECX, EDX, ESI, EDI, ESP or EBP)</th>
+<th>指令</th>
+<th>含义</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>\<reg16></td>
+<td><code>&lt;reg32&gt;</code></td>
+<td>32位寄存器(EAX, EBX, ECX, EDX, ESI, EDI, ESP or EBP)</td>
+</tr>
+<tr>
+<td><code>&lt;reg16&gt;</code></td>
 <td>16位寄存器(AX, BX, CX, or DX)</td>
 </tr>
 <tr>
-<td>\<reg 8 ></td>
+<td><code>&lt;reg 8 &gt;</code></td>
 <td>8位寄存器(AH, BH, CH, DH, AL, BL, CL or DL)</td>
 </tr>
 <tr>
-<td>\<reg></td>
+<td><code>&lt;reg&gt;</code></td>
 <td>任何寄存器</td>
 </tr>
 <tr>
@@ -536,27 +540,23 @@
 <td></td>
 </tr>
 <tr>
-<td>\<mem></td>
+<td><code>&lt;mem&gt;</code></td>
 <td>内存地址(例如 [eax], [var + 4], or )</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
+<td><code>&lt;con32&gt;</code></td>
 <td></td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
+<td><code>&lt;con16&gt;</code></td>
 <td></td>
 </tr>
 <tr>
+<td><code>&lt;con8&gt;</code></td>
 <td></td>
+</tr>
+<tr>
+<td><code>&lt;con&gt;</code></td>
 </tr>
 </tbody>
 </table>
