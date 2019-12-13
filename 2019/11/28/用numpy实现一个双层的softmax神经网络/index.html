@@ -97,7 +97,8 @@
 <meta property="og:image" content="https:&#x2F;&#x2F;1305936314.github.io&#x2F;2019&#x2F;11&#x2F;28&#x2F;%E7%94%A8numpy%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E5%8F%8C%E5%B1%82%E7%9A%84softmax%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C&#x2F;accuracy.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;1305936314.github.io&#x2F;2019&#x2F;11&#x2F;28&#x2F;%E7%94%A8numpy%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E5%8F%8C%E5%B1%82%E7%9A%84softmax%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C&#x2F;propagation.jpg">
 <meta property="og:image" content="https:&#x2F;&#x2F;1305936314.github.io&#x2F;2019&#x2F;11&#x2F;28&#x2F;%E7%94%A8numpy%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E5%8F%8C%E5%B1%82%E7%9A%84softmax%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C&#x2F;cost.png">
-<meta property="og:updated_time" content="2019-12-13T13:58:05.318Z">
+<meta property="og:image" content="https:&#x2F;&#x2F;1305936314.github.io&#x2F;2019&#x2F;11&#x2F;28&#x2F;%E7%94%A8numpy%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E5%8F%8C%E5%B1%82%E7%9A%84softmax%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C&#x2F;accuracy0.png">
+<meta property="og:updated_time" content="2019-12-13T14:02:19.853Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;1305936314.github.io&#x2F;2019&#x2F;11&#x2F;28&#x2F;%E7%94%A8numpy%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E5%8F%8C%E5%B1%82%E7%9A%84softmax%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C&#x2F;output_13_0.png">
 
@@ -520,7 +521,7 @@
 <p>并且，由于使用了小批量时每次向量化计算减少了，for循环需要的次数增多了，计算时间也会被明显拉长</p>
 <h1 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h1><p>先训练后得出模型的重要参数W，b后，我们要进行测试，时间的评估以及准确度的评估</p>
 <p>测试时将测试集放入参数中进行正向传播后得出A2，即模型的预测值，然后看预测值正确的数量来评估准确度。</p>
-<h2 id="调参收获"><a href="#调参收获" class="headerlink" title="调参收获"></a>调参收获</h2><img src="/2019/11/28/%E7%94%A8numpy%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E5%8F%8C%E5%B1%82%E7%9A%84softmax%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/cost.png" class="" title="成本">    
+<h2 id="调参收获"><a href="#调参收获" class="headerlink" title="调参收获"></a>调参收获</h2><img src="/2019/11/28/%E7%94%A8numpy%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E5%8F%8C%E5%B1%82%E7%9A%84softmax%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/cost.png" class="" title="成本">    <img src="/2019/11/28/%E7%94%A8numpy%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E5%8F%8C%E5%B1%82%E7%9A%84softmax%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/accuracy0.png" class="" title="准确率">
 <p>这个是我在调小了第一层的神经元数1000=&gt;50后的成本和准确率，调小了神经元数之后呢，相应的这个需要遍历的次数变的高了不少，我觉得可能第一层的权重w初始化需要小一点比较好，本身初始化大小与节点数成反相关的。并且呢需要拟合的复杂度变高了，毕竟与每个节点的相关度变高了，这就相当于是反向正则化了(并且也确认了一个观点“增加网络的规模有一定正则化作用”是对的)，然后的话mini-batch不能太小，而在cost图中如果阴影部分比较分散的话，我个人觉得可能是需要学习率小一点，如果是多片分开的阴影的话我觉得可能需要神经元数多一点更好。</p>
 
       
