@@ -92,7 +92,7 @@
 <meta property="og:description" content="本文为学习了jiftle大神翻译并写下的通俗易懂的《X86汇编快速入门》后的记录    寄存器部分 如图，EAX用于计算，ECX用于循环变量计数，ESP指示栈指针(用于指示栈顶位置)，EBP是基址指针(用于指示子程序或者函数调用的基址指针)。 并且，EAX,EBX, ECX和EDX的前两个高位字节和后两个低位字节可以独立使用，其中两位低字节又被独立分为H和L部分，这样做是考虑兼容16位程序。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https:&#x2F;&#x2F;1305936314.github.io&#x2F;2019&#x2F;12&#x2F;04&#x2F;%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0&#x2F;x86-registers.png">
-<meta property="og:updated_time" content="2019-12-11T16:31:35.958Z">
+<meta property="og:updated_time" content="2019-12-16T14:11:54.367Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;1305936314.github.io&#x2F;2019&#x2F;12&#x2F;04&#x2F;%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0&#x2F;x86-registers.png">
 
@@ -580,7 +580,11 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">inc &lt;reg&gt;</span><br><span class="line">inc &lt;mem&gt;</span><br><span class="line">dec &lt;reg&gt;</span><br><span class="line">dec &lt;mem&gt;</span><br><span class="line"></span><br><span class="line">比如：</span><br><span class="line">dec eax —— eax中的值自减1</span><br><span class="line">inc DWORD PTR [var] —— var指示内存中的一个4字节值自加1</span><br></pre></td></tr></table></figure>
 <h3 id="imul-——-整数相乘"><a href="#imul-——-整数相乘" class="headerlink" title="imul —— 整数相乘"></a>imul —— 整数相乘</h3><p>整数相乘指令，它有两种指令格式，一种位两个操作数，将两个操作数的值相乘，并将结果保存在第一个操作数中，第一个操作数必须为寄存器；第二种格式为三个操作数，其语义为：将第二个和第三个操作数相乘，并将结果保存在第一个操作数中，第一个操作数必须为寄存器，其语法如下所示：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">imul &lt;reg32&gt;,&lt;reg32&gt;</span><br><span class="line">imul &lt;reg32&gt;,&lt;mem&gt;</span><br><span class="line">imul &lt;reg32&gt;,&lt;reg32&gt;,&lt;con&gt;</span><br><span class="line">imul &lt;reg32&gt;,&lt;mem&gt;,&lt;con&gt;</span><br><span class="line"></span><br><span class="line">比如：</span><br><span class="line">imul eax, [var]——eax→eax * [var]</span><br><span class="line">imul esi,edi, 25——ESI→EDI * 25</span><br></pre></td></tr></table></figure>
-<h3 id="idiv-——-整数除法"><a href="#idiv-——-整数除法" class="headerlink" title="idiv —— 整数除法"></a>idiv —— 整数除法</h3>
+<blockquote>
+<p>  下面不是很需要仔细品懂的地方开始省略</p>
+</blockquote>
+<h3 id="idiv-——-整数除法"><a href="#idiv-——-整数除法" class="headerlink" title="idiv —— 整数除法"></a>idiv —— 整数除法</h3><h3 id="and-or-xor-——-按位逻辑与，或-以及-异或"><a href="#and-or-xor-——-按位逻辑与，或-以及-异或" class="headerlink" title="and, or, xor  —— 按位逻辑与，或  以及 异或"></a>and, or, xor  —— 按位逻辑与，或  以及 异或</h3><h3 id="not-——-按位逻辑非"><a href="#not-——-按位逻辑非" class="headerlink" title="not —— 按位逻辑非"></a>not —— 按位逻辑非</h3><h3 id="neg-——取负指令"><a href="#neg-——取负指令" class="headerlink" title="neg ——取负指令"></a>neg ——取负指令</h3><h3 id="shl-shr-——-SHift-left-Shift-Right-左移右移"><a href="#shl-shr-——-SHift-left-Shift-Right-左移右移" class="headerlink" title="shl, shr —— SHift left, Shift Right,左移右移"></a>shl, shr —— SHift left, Shift Right,左移右移</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">shl &lt;reg&gt;,&lt;con8&gt;</span><br><span class="line">shl &lt;mem&gt;,&lt;con8&gt;</span><br><span class="line">shl &lt;reg&gt;,&lt;sl&gt;</span><br><span class="line">shl &lt;mem&gt;,&lt;cl&gt;</span><br><span class="line"></span><br><span class="line">;shr同理</span><br><span class="line">比如:</span><br><span class="line">shl eax, 1 —— 将eax的值乘2(左移位数n,相当于乘2^n)</span><br><span class="line">shr ebx, cl ——将ebx的地板值除以2^cl的值</span><br></pre></td></tr></table></figure>
+<h2 id="控制转移指令"><a href="#控制转移指令" class="headerlink" title="控制转移指令"></a>控制转移指令</h2>
       
     </div>
     
@@ -716,7 +720,7 @@
               
                 <a href="/archives%7C%7C%20archive">
               
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -727,7 +731,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -738,7 +742,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -805,7 +809,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#寄存器部分"><span class="nav-number">1.</span> <span class="nav-text">寄存器部分</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内存和寻址方式"><span class="nav-number">2.</span> <span class="nav-text">内存和寻址方式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#声明静态数据区"><span class="nav-number">2.1.</span> <span class="nav-text">声明静态数据区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#寻址方式"><span class="nav-number">2.2.</span> <span class="nav-text">寻址方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#长度规定"><span class="nav-number">2.3.</span> <span class="nav-text">长度规定</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#汇编指令"><span class="nav-number">3.</span> <span class="nav-text">汇编指令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据传送指令"><span class="nav-number">3.1.</span> <span class="nav-text">数据传送指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#mov-——移动-复制"><span class="nav-number">3.1.1.</span> <span class="nav-text">mov ——移动(复制)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#push——入栈"><span class="nav-number">3.1.2.</span> <span class="nav-text">push——入栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pop-——-出栈"><span class="nav-number">3.1.3.</span> <span class="nav-text">pop  —— 出栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lea-——载入有效地址"><span class="nav-number">3.1.4.</span> <span class="nav-text">lea   ——载入有效地址</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算术和逻辑指令"><span class="nav-number">3.2.</span> <span class="nav-text">算术和逻辑指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#add-——-整数加法"><span class="nav-number">3.2.1.</span> <span class="nav-text">add —— 整数加法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sub-——-整数减法"><span class="nav-number">3.2.2.</span> <span class="nav-text">sub —— 整数减法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#inc-dec——自增自减"><span class="nav-number">3.2.3.</span> <span class="nav-text">inc, dec——自增自减</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#imul-——-整数相乘"><span class="nav-number">3.2.4.</span> <span class="nav-text">imul —— 整数相乘</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#idiv-——-整数除法"><span class="nav-number">3.2.5.</span> <span class="nav-text">idiv —— 整数除法</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#寄存器部分"><span class="nav-number">1.</span> <span class="nav-text">寄存器部分</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内存和寻址方式"><span class="nav-number">2.</span> <span class="nav-text">内存和寻址方式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#声明静态数据区"><span class="nav-number">2.1.</span> <span class="nav-text">声明静态数据区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#寻址方式"><span class="nav-number">2.2.</span> <span class="nav-text">寻址方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#长度规定"><span class="nav-number">2.3.</span> <span class="nav-text">长度规定</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#汇编指令"><span class="nav-number">3.</span> <span class="nav-text">汇编指令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据传送指令"><span class="nav-number">3.1.</span> <span class="nav-text">数据传送指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#mov-——移动-复制"><span class="nav-number">3.1.1.</span> <span class="nav-text">mov ——移动(复制)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#push——入栈"><span class="nav-number">3.1.2.</span> <span class="nav-text">push——入栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pop-——-出栈"><span class="nav-number">3.1.3.</span> <span class="nav-text">pop  —— 出栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lea-——载入有效地址"><span class="nav-number">3.1.4.</span> <span class="nav-text">lea   ——载入有效地址</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算术和逻辑指令"><span class="nav-number">3.2.</span> <span class="nav-text">算术和逻辑指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#add-——-整数加法"><span class="nav-number">3.2.1.</span> <span class="nav-text">add —— 整数加法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sub-——-整数减法"><span class="nav-number">3.2.2.</span> <span class="nav-text">sub —— 整数减法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#inc-dec——自增自减"><span class="nav-number">3.2.3.</span> <span class="nav-text">inc, dec——自增自减</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#imul-——-整数相乘"><span class="nav-number">3.2.4.</span> <span class="nav-text">imul —— 整数相乘</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#idiv-——-整数除法"><span class="nav-number">3.2.5.</span> <span class="nav-text">idiv —— 整数除法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#and-or-xor-——-按位逻辑与，或-以及-异或"><span class="nav-number">3.2.6.</span> <span class="nav-text">and, or, xor  —— 按位逻辑与，或  以及 异或</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#not-——-按位逻辑非"><span class="nav-number">3.2.7.</span> <span class="nav-text">not —— 按位逻辑非</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#neg-——取负指令"><span class="nav-number">3.2.8.</span> <span class="nav-text">neg ——取负指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#shl-shr-——-SHift-left-Shift-Right-左移右移"><span class="nav-number">3.2.9.</span> <span class="nav-text">shl, shr —— SHift left, Shift Right,左移右移</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#控制转移指令"><span class="nav-number">3.3.</span> <span class="nav-text">控制转移指令</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -825,7 +829,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -1453,6 +1457,21 @@
   
 
   
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
 
   
   
